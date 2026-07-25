@@ -55,7 +55,7 @@ header h1 {
 }
 
 main {
-  max-width: 950px;
+  max-width: 1100px;
   margin: 30px auto;
   padding: 0 20px;
   display: flex;
@@ -70,7 +70,7 @@ main {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: box-shadow 0.2s;
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -78,17 +78,19 @@ main {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.foto {
-  width: 80px;
-  height: 80px;
-  min-width: 80px;
-  border-radius: 50%;
-  object-fit: cover;
+.card-esquerda {
+  display: flex;
+  gap: 15px;
+  flex: 1;
+  min-width: 260px;
 }
 
-.card-info {
-  flex: 1;
-  min-width: 0;
+.foto {
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .card-info h3 {
@@ -115,6 +117,7 @@ main {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
 .tag {
@@ -130,10 +133,79 @@ main {
   color: #1a5cad;
 }
 
-.card-acao {
+.card-endereco {
+  border-top: 1px solid #eee;
+  padding-top: 8px;
+  margin-top: 5px;
+}
+
+.local-nome {
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.endereco-texto {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.card-agenda {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex: 1.4;
+  min-width: 280px;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  padding: 0 15px;
+}
+
+.dia-coluna {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  min-width: 60px;
+}
+
+.dia-cabecalho {
+  font-size: 0.75rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.horario-btn {
+  background-color: #eef7f6;
+  color: #205e5c;
+  border: 1px solid #cfe8e5;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  min-width: 55px;
+}
+
+.horario-btn:hover {
+  background-color: #2b7a78;
+  color: white;
+}
+
+.horario-vazio {
+  color: #ccc;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.card-rodape {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  justify-content: center;
   gap: 10px;
   min-width: 140px;
 }
@@ -165,20 +237,23 @@ main {
   padding: 30px;
 }
 
-@media (max-width: 600px) {
-  .busca input {
-    width: 100%;
-  }
-
+@media (max-width: 800px) {
   .card-profissional {
     flex-direction: column;
-    align-items: flex-start;
   }
 
-  .card-acao {
-    width: 100%;
-    align-items: flex-start;
+  .card-agenda {
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+  }
+
+  .card-rodape {
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
+    width: 100%;
   }
 }
