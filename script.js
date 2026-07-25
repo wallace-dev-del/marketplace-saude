@@ -42,6 +42,94 @@ const profissionais = [
     teleconsulta: true,
     nota: 4.9,
     avaliacoes: 125
+  },
+  {
+    nome: "Marcos Andrade",
+    inicial: "M",
+    especialidade: "Dentista",
+    cidade: "Nova Iguaçu",
+    preco: "R$ 120",
+    convenio: "Particular",
+    teleconsulta: false,
+    nota: 4.6,
+    avaliacoes: 84
+  },
+  {
+    nome: "Renata Souza",
+    inicial: "R",
+    especialidade: "Dentista",
+    cidade: "Mesquita",
+    preco: "R$ 140",
+    convenio: "Amil",
+    teleconsulta: false,
+    nota: 4.8,
+    avaliacoes: 61
+  },
+  {
+    nome: "Paulo Henrique Costa",
+    inicial: "P",
+    especialidade: "Nutricionista",
+    cidade: "Nova Iguaçu",
+    preco: "R$ 110",
+    convenio: "Particular",
+    teleconsulta: true,
+    nota: 4.7,
+    avaliacoes: 47
+  },
+  {
+    nome: "Juliana Ferreira",
+    inicial: "J",
+    especialidade: "Nutricionista",
+    cidade: "Rio de Janeiro",
+    preco: "R$ 150",
+    convenio: "Bradesco Saúde",
+    teleconsulta: true,
+    nota: 4.9,
+    avaliacoes: 98
+  },
+  {
+    nome: "Ricardo Nunes",
+    inicial: "R",
+    especialidade: "Cardiologista",
+    cidade: "Nilópolis",
+    preco: "R$ 250",
+    convenio: "Particular",
+    teleconsulta: false,
+    nota: 4.9,
+    avaliacoes: 156
+  },
+  {
+    nome: "Camila Duarte",
+    inicial: "C",
+    especialidade: "Fisioterapeuta",
+    cidade: "Nova Iguaçu",
+    preco: "R$ 100",
+    convenio: "Amil",
+    teleconsulta: false,
+    nota: 4.5,
+    avaliacoes: 33
+  },
+  {
+    nome: "Thiago Martins",
+    inicial: "T",
+    especialidade: "Fisioterapeuta",
+    cidade: "Mesquita",
+    preco: "R$ 95",
+    convenio: "Particular",
+    teleconsulta: false,
+    nota: 4.6,
+    avaliacoes: 22
+  },
+  {
+    nome: "Vanessa Lopes",
+    inicial: "V",
+    especialidade: "Dermatologista",
+    cidade: "Rio de Janeiro",
+    preco: "R$ 280",
+    convenio: "Bradesco Saúde",
+    teleconsulta: true,
+    nota: 4.8,
+    avaliacoes: 203
   }
 ];
 
