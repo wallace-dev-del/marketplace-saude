@@ -228,7 +228,7 @@ function gerarUrlFoto(nome) {
   return `https://ui-avatars.com/api/?name=${nomeCodificado}&background=2b7a78&color=fff&size=128&bold=true`;
 }
 
-function montarColunaAgenda(diaInfo) {
+function montarColunaAgenda(diaInfo, indexProf, indexDia) {
   if (diaInfo.horarios.length === 0) {
     return `
       <div class="dia-coluna">
@@ -239,7 +239,7 @@ function montarColunaAgenda(diaInfo) {
   }
 
   const botoes = diaInfo.horarios
-    .map(h => `<div class="horario-btn">${h}</div>`)
+    .map(h => `<div class="horario-btn" data-prof="${indexProf}" data-dia="${diaInfo.dia}" data-data="${diaInfo.data}" data-hora="${h}">${h}</div>`)
     .join("");
 
   return `
@@ -258,15 +258,18 @@ function mostrarProfissionais(lista) {
     return;
   }
 
-  lista.forEach(prof => {
+  lista.forEach((prof, indexProf) => {
     const card = document.createElement("div");
     card.className = "card-profissional";
+    card.dataset.prof = indexProf;
 
     const teleTag = prof.teleconsulta
       ? `<span class="tag tele">Teleconsulta</span>`
       : "";
 
-    const colunasAgenda = prof.agenda.map(montarColunaAgenda).join("");
+    const colunasAgenda = prof.agenda
+      .map((diaInfo, indexDia) => montarColunaAgenda(diaInfo, indexProf, indexDia))
+      .join("");
 
     card.innerHTML = `
       <div class="card-esquerda">
@@ -292,12 +295,39 @@ function mostrarProfissionais(lista) {
 
       <div class="card-rodape">
         <span class="preco">${prof.preco}</span>
-        <button class="btn-agendar">Agendar consulta</button>
+        <p class="selecao-texto"></p>
+        <button class="btn-agendar" disabled>Selecione um horário</button>
       </div>
     `;
     listaDiv.appendChild(card);
   });
 }
+
+// Clique nos horários (usando delegação de evento)
+listaDiv.addEventListener("click", (evento) => {
+  const botaoClicado = evento.target.closest(".horario-btn");
+  if (!botaoClicado) return;
+
+  const card = botaoClicado.closest(".card-profissional");
+
+  // Remove a seleção de qualquer outro horário nesse mesmo card
+  card.querySelectorAll(".horario-btn").forEach(btn => btn.classList.remove("selecionado"));
+
+  // Marca o horário clicado como selecionado
+  botaoClicado.classList.add("selecionado");
+
+  // Atualiza o texto e o botão de agendar
+  const dia = botaoClicado.dataset.dia;
+  const data = botaoClicado.dataset.data;
+  const hora = botaoClicado.dataset.hora;
+
+  const textoSelecao = card.querySelector(".selecao-texto");
+  const botaoAgendar = card.querySelector(".btn-agendar");
+
+  textoSelecao.textContent = `${dia}, ${data} às ${hora}`;
+  botaoAgendar.textContent = `Agendar às ${hora}`;
+  botaoAgendar.disabled = false;
+});
 
 function buscarProfissionais() {
   const especialidade = inputEspecialidade.value.toLowerCase();
